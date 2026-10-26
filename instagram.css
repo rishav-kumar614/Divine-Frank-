@@ -1,0 +1,165 @@
+/* =============================================
+   INSTAGRAM CAROUSEL — Fixed & Polished
+   ============================================= */
+
+/* --- Outer wrapper: relative so arrows can be absolute --- */
+.ig-carousel-wrapper {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto 28px;
+  /* Side padding makes room for the absolutely-positioned arrows */
+  padding: 0 64px;
+  box-sizing: border-box;
+}
+
+/* --- Viewport: full width of wrapper (minus arrow padding), clips off-screen slides --- */
+.ig-carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px; /* slight rounding on the clip boundary */
+}
+
+/* --- Track: 3 slides wide, transitions between them --- */
+.ig-carousel-track {
+  display: flex;
+  width: 300%;        /* 3 slides × 100% each */
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* --- Each slide: fills exactly 1 viewport width (33.333333% of 300% track) --- */
+.ig-slide {
+  width: 33.333333%;          /* 33.333333% of 300% track = 100% of viewport */
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* --- Card wrapper: raised/embossed look for each post --- */
+.ig-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* NO overflow:hidden here — it clips the Instagram iframe's right edge */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+}
+
+.ig-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Force blockquote to fill the card and reset its own styles */
+.ig-card > blockquote.instagram-media {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-shadow: none !important;   /* card handles the shadow */
+  border-radius: 0 !important;   /* card handles the radius */
+  border: none !important;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+/* --- Arrow buttons: absolutely positioned, centred vertically --- */
+.ig-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream, #f5f0e8);
+  color: var(--forest, #0a2e1a);
+  font-size: 28px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.14);
+  transition: background 0.25s ease, color 0.25s ease,
+              transform 0.2s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  z-index: 10;
+  padding: 0;
+}
+
+.ig-arrow-prev {
+  left: 4px;
+}
+
+.ig-arrow-next {
+  right: 4px;
+}
+
+.ig-arrow:hover {
+  background: #c8a96e;   /* site gold */
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(200, 169, 110, 0.35);
+}
+
+.ig-arrow:disabled,
+.ig-arrow[aria-disabled="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Dot indicators --- */
+.ig-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 32px;
+}
+
+.ig-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.ig-dot.active {
+  background: #c8a96e;
+  transform: scale(1.3);
+}
+
+/* --- Responsive: tablet --- */
+@media (max-width: 900px) {
+  .ig-carousel-wrapper {
+    padding: 0 52px;
+  }
+}
+
+/* --- Responsive: mobile (1 col) --- */
+@media (max-width: 600px) {
+  .ig-carousel-wrapper {
+    padding: 0 44px;
+  }
+  .ig-slide {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .ig-slide > .ig-card:nth-child(n+2) {
+    display: none;
+  }
+  .ig-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}

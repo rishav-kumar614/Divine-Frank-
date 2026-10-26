@@ -1,0 +1,19 @@
+/* --- SCROLL ANIMATIONS --- */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+}
+
+/* Starting states */
+.reveal-up { transform: translateY(60px); }
+.reveal-down { transform: translateY(-60px); }
+.reveal-left { transform: translateX(-60px); } /* Enters from left side */
+.reveal-right { transform: translateX(60px); } /* Enters from right side */
+.reveal-fade { transform: none; } /* Fade only, no slide — used for footer */
+
+/* Active (visible) state */
+.reveal.active {
+  opacity: 1;
+  transform: translate(0, 0);
+}

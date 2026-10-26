@@ -1,0 +1,2 @@
+a.estate-photo{display:block;cursor:pointer}.estate-photo .estate-title h3{margin-bottom:7px}.estate-photo .estate-title p{margin:0}.estate-card:hover .estate-photo::before{inset:14px;opacity:1}
+.property-card-link{cursor:pointer}.property-card-link:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
