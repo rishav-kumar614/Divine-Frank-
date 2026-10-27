@@ -16,7 +16,7 @@
 .ig-carousel-viewport {
   width: 100%;
   overflow: hidden;
-  border-radius: 4px; /* slight rounding on the clip boundary */
+  border-radius:0; /* slight rounding on the clip boundary */
 }
 
 /* --- Track: 3 slides wide, transitions between them --- */
@@ -41,7 +41,7 @@
 /* --- Card wrapper: raised/embossed look for each post --- */
 .ig-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius:0;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
   /* NO overflow:hidden here — it clips the Instagram iframe's right edge */
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
