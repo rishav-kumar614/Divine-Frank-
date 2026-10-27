@@ -28,3 +28,4 @@
 .site-credit img{width:16px;height:16px;object-fit:contain;display:block}
 .site-credit .divider{width:1px;height:12px;background:#d1d5db}
 .footer-bottom .site-credit{margin-left:auto;flex:none;order:3}
+.instagram-media,iframe.instagram-media{border-radius:0 !important}
